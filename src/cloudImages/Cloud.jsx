@@ -115,3 +115,30 @@ export const GallaryImages = [
     publicId: "cnbngddscx35xy20kyrs",
   },
 ];
+
+export const CarouselImage = {
+  publicId: "agk6tpbd2vtpvv62kuaf",
+};
+
+export const CarouselImages = [
+  {
+    id: 1,
+    publicId: "bejq7ta7pikbtunh1il",
+  },
+  {
+    id: 2,
+    publicId: "sizfhzpoxjzwmvkrzqmj",
+  },
+  {
+    id: 3,
+    publicId: "qxp5ioatrjgayrqnh0i4",
+  },
+  {
+    id: 4,
+    publicId: "kmdsrpow5wwj4xhl6ynx",
+  },
+  {
+    id: 5,
+    publicId: "cnbngddscx35xy20kyrs",
+  },
+];
