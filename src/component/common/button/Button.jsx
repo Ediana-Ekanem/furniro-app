@@ -1,11 +1,16 @@
 import React from "react";
 
-const Button = ({ text }) => {
+const Button = ({ backgroundColor, textColor, padding, children }) => {
   return (
     <button
-      className={`text-white px-12 py-4 bg-[#b88e2f]  mt-10 font-semibold`}
+      className=" mt-10 font-bold text-[16px] leading-[24px]"
+      style={{
+        backgroundColor: backgroundColor,
+        color: textColor,
+        padding: padding,
+      }}
     >
-      {text}
+      {children}
     </button>
   );
 };
