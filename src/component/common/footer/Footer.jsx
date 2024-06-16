@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Container from "../../container/Container";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const footerLinks = useMemo(
+    () => [
+      { label: "Home", to: "/" },
+      { label: "Shop", to: "/shop" },
+      { label: "About", to: "/about" },
+      { label: "Contact", to: "/contact" },
+    ],
+    []
+  );
+
   return (
-    <div className="border-t-2 border-[#efefef] py-10">
+    <footer className="border-t-2 border-[#efefef] py-10">
       <Container>
         <div className="text-center space-y-10 md:space-y-0 md:text-start md:flex justify-between">
           <div className="flex flex-col space-y-7 font-poppins">
@@ -18,24 +28,16 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className=" flex-col space-y-9 font-poppins text-[16px]">
+          <div className="flex-col space-y-9 font-poppins text-[16px]">
             <p className="text-[#9F9F9F]">Links</p>
-            <li className=" list-none ">
-              <Link to="/">Home</Link>
-            </li>
-            <li className=" list-none ">
-              <Link to="/shop">Shop</Link>
-            </li>
-
-            <li className=" list-none ">
-              <Link to="/about">About</Link>
-            </li>
-            <li className=" list-none ">
-              <Link to="/contact">Contact</Link>
-            </li>
+            {footerLinks.map((link, index) => (
+              <li key={index} className="list-none">
+                <Link to={link.to}>{link.label}</Link>
+              </li>
+            ))}
           </div>
 
-          <div className="mt-10 md:mt-0 flex flex-col space-y-9 font-poppins text-[16px]">
+          <div className="hidden mt-10 md:mt-0 md:flex flex-col space-y-9 font-poppins text-[16px]">
             <p className="text-[#9F9F9F] text-[16px]">Help</p>
             <p>Payment Options</p>
             <p>Returns</p>
@@ -44,25 +46,28 @@ const Footer = () => {
           <div className="flex flex-col space-y-9 font-poppins  text-[16px]">
             <p className="text-[#9F9F9F]">Newsletter</p>
 
-            <div className=" hidden md:flex space-x-5">
+            <div className="flex justify-center md:justify-start  space-x-3 md:space-x-5 text-[12px] md:text-[16px]">
               <input
                 type="text"
                 name=""
                 id=""
                 placeholder="Enter Your Email Address"
-                className="border-b-2 border-black  outline-none"
+                aria-label="Enter Your Email Address"
+                className="border-b-2 border-black outline-none"
               />
-              <p className=" border-b-2 border-black"> SUBSCRIBE</p>
+              <button type="submit" className="border-b-2 border-black">
+                SUBSCRIBE
+              </button>
             </div>
           </div>
         </div>
         <div className="border-t-2 border-[#efefef] my-5 "></div>
-        <p className=" text-center md:text-start font-semibold">
-          2023 furino. All rights reverved
+        <p className="text-center md:text-start font-semibold">
+          2023 Furniro. All rights reserved
         </p>
       </Container>
-    </div>
+    </footer>
   );
 };
 
-export default Footer;
+export default React.memo(Footer);

@@ -30,25 +30,27 @@ const CarouselSection = () => {
     <>
       <section className="bg-[#FCF8F3] py-10">
         <Container>
-          <div className="flex  items-center   font-poppins">
+          <div className="md:flex  items-center   font-poppins">
             <div>
-              <h3 className="font-[700] text-[40px] leading-[48px]  w-[400px]">
+              <h3 className="font-[700] text-center md:text-start text-[25px] mb-10 md:mb-0 md:text-[40px] md:leading-[48px]  md:w-[400px]">
                 50+ Beautiful rooms inspiration
               </h3>
-              <p className="text-[#616161] font-[500] text-[16px] leading-[24px] w-[370px] mt-5">
+              <p className="text-[#616161] font-[500] text-[16px] leading-[24px] md:w-[370px] mt-5 hidden md:block">
                 Our designer already made a lot of beautiful prototipe of rooms
                 that inspire you
               </p>
 
-              <Button
-                backgroundColor="#b88e2f"
-                textColor="white"
-                padding="12px 52px"
-              >
-                Explore More
-              </Button>
+              <div className="hidden md:block">
+                <Button
+                  backgroundColor="#b88e2f"
+                  textColor="white"
+                  padding="12px 52px"
+                >
+                  Explore More
+                </Button>
+              </div>
             </div>
-            <div className="w-[404px] h-[582px] relative">
+            <div className=" hidden md:block md:w-[404px] h-[582px] relative">
               <CloudinaryImage
                 cloudName={cloudName}
                 publicId={CarouselImage.publicId}
@@ -56,7 +58,7 @@ const CarouselSection = () => {
               ></CloudinaryImage>
 
               <div className="absolute left-5 bottom-5 font-poppins ">
-                <div className="flex">
+                <div className=" flex">
                   <div
                     className="w-[217px] h-[130px] flex  flex-col justify-center items-center"
                     style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
@@ -79,11 +81,11 @@ const CarouselSection = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[372px] h-full  ms-10  ">
+            <div className=" w-[280px] md:w-[372px] h-[400px] md:h-full  md:ms-10  ">
               <Slider {...settings}>
                 {CarouselImages.map((item) => (
                   <div key={item.id}>
-                    <div className="w-[372px] h-[559px]">
+                    <div className="w-[280px] md:w-[372px] h-[400px] md:h-[559px]">
                       <CloudinaryImage
                         cloudName={cloudName}
                         publicId={item.publicId}

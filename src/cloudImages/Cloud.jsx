@@ -123,7 +123,7 @@ export const CarouselImage = {
 export const CarouselImages = [
   {
     id: 1,
-    publicId: "bejq7ta7pikbtunh1il",
+    publicId: "bejq7ta7pikbtvunh1il",
   },
   {
     id: 2,
