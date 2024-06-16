@@ -22,7 +22,7 @@ const ProductSection = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10 mt-5 md:mt-10">
         {ProductImages.map((product) => (
           <div
-            className="bg-[#F4F5F7] h-[436px] w-[285px] relative group"
+            className="bg-[#F4F5F7] h-[436px] w-[285px] relative group ms-8 md:ms-0"
             key={product.publicId}
           >
             <div className="relative">

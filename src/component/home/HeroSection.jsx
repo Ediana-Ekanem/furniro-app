@@ -15,7 +15,7 @@ const HeroSection = React.memo(() => (
   <section>
     <LazyLoad height={200} offset={100}>
       <div
-        className="hero-section bg-cover bg-center h-screen relative z-10 mt-10"
+        className="hero-section bg-cover bg-center h-[500px]  md:h-screen relative z-10 mt-10"
         style={{ backgroundImage: `url(${bgImageUrl})` }}
       >
         <div className="hero-content hidden md:block absolute left-[739px] top-[180px] w-[610px] h-[420px] bg-[#FFF3E3] p-10 rounded-lg">

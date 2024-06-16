@@ -81,11 +81,11 @@ const CarouselSection = () => {
                 </div>
               </div>
             </div>
-            <div className=" w-[280px] md:w-[372px] h-[400px] md:h-full  md:ms-10  ">
+            <div className=" w-[300px] md:w-[372px] h-[400px] md:h-full  md:ms-10  ms-8  ">
               <Slider {...settings}>
                 {CarouselImages.map((item) => (
                   <div key={item.id}>
-                    <div className="w-[280px] md:w-[372px] h-[400px] md:h-[559px]">
+                    <div className="w-[300px] md:w-[372px] h-[400px] md:h-[559px]">
                       <CloudinaryImage
                         cloudName={cloudName}
                         publicId={item.publicId}
