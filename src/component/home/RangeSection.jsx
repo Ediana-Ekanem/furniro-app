@@ -16,7 +16,7 @@ const RangeSection = React.memo(() => (
         </p>
       </div>
 
-      <div className="md:flex justify-center space-y-5 md:space-y-0 md:space-x-5 pt-5 md:py-10 ms-8 md:ms-0">
+      <div className="md:flex justify-center space-y-5 md:space-y-0 md:space-x-5 pt-5 md:py-10 ms-5 md:ms-0">
         {RangeImages.map((image) => (
           <div
             key={image.publicId}

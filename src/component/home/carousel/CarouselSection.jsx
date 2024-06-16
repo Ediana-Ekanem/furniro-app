@@ -81,7 +81,7 @@ const CarouselSection = () => {
                 </div>
               </div>
             </div>
-            <div className=" w-[300px] md:w-[372px] h-[400px] md:h-full  md:ms-10  ms-5  ">
+            <div className=" w-[300px] md:w-[372px] h-[400px] md:h-full  md:ms-10  ms-3  ">
               <Slider {...settings}>
                 {CarouselImages.map((item) => (
                   <div key={item.id}>
