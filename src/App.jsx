@@ -6,6 +6,8 @@ import Contact from "./pages/contact/Contact";
 import Navbar from "./component/common/navabar/Navbar";
 import Footer from "./component/common/footer/Footer";
 import Cart from "./pages/cart/Cart";
+import ShopID from "./pages/[shopID]/page";
+import "./App.css";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/shop/:shopID" element={<ShopID />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />

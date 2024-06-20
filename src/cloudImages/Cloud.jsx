@@ -142,3 +142,171 @@ export const CarouselImages = [
     publicId: "cnbngddscx35xy20kyrs",
   },
 ];
+
+
+
+
+
+export const shopCatalogue = [
+  {
+    id: 1,
+    category: "Sofas",
+    tags: "Sofa, Chair, Home , Shop",
+    sku: "SS001",
+    item: [
+      {
+        publicId: "fwlusgufpsyupaqplloh",
+        title: "Lolito",
+        desc: "Luxury big sofa",
+        discount: "14.000.000",
+        amount: "7.000.00",
+        tag: "-50%",
+        rate: 5,
+        sku: "SS001",
+      },
+      {
+        publicId: "ddonfbzwowcltx4xuy0v",
+        title: "Pingky",
+        desc: "Cute bed set",
+        discount: "14.000.000",
+        amount: "7.000.000",
+        tag: "-50%",
+        rate: 4,
+        sku: "SS001",
+      },
+      {
+        publicId: "ekciilnu5dghxpr3yiyv",
+        title: "Syltherine",
+        desc: "Stylish cafe chair",
+        discount: "3.500.000",
+        amount: "2.500.000",
+        tag: "-30%",
+        rate: 3,
+        sku: "SS001",
+      },
+      {
+        publicId: "po4spgel27pto6rddkce",
+        title: "Leviosa",
+        desc: "Stylish cafe chair",
+        discount: "",
+        amount: "2.500.000",
+        tag: "",
+        rate: 2,
+        sku: "SS001",
+      }
+    ],
+  },
+  {
+    id: 2,
+    category: "tables",
+    tags: "Sofa, Chair, Home , Shop",
+    sku: "SS001",
+    item: [
+      {
+        publicId: "xc0ggofmi3qrn6zlfivr",
+        title: "Respira",
+        desc: "Outdoor bar table and stool",
+        discount: "",
+        amount: "500.00",
+        tag: "new",
+        rate: 1,
+        sku: "SS001",
+      }
+    ],
+  },
+ 
+  {
+    id: 3,
+    category: "lamps",
+    tags: "Sofa, Chair, Home , Shop",
+    sku: "SS001",
+    item: [
+      {
+        publicId: "rzhjzikxsvnn5tgapbf9",
+        title: "Grifo",
+        desc: "Night lamp",
+        discount: "",
+        amount: "1.500.000",
+        tag: "",
+        sku: "SS001",
+      }
+    ],
+  },
+ 
+  {
+    id: 4,
+    category: "Mug",
+    tags: "Sofa, Chair, Home , Shop",
+    sku: "SS001",
+    item: [
+      {
+        publicId: "inqvuemmlmzenxzvhw0c",
+        title: "Muggo",
+        desc: "Small mug",
+        discount: "",
+        amount: "150.000",
+        tag: "new",
+        rate: 6,
+        sku: "SS001",
+      }
+    ],
+  },
+
+  {
+    id: 4,
+    category: "Pots",
+    tags: "Sofa, Chair, Home , Shop",
+    sku: "SS001",
+    item: [
+      {
+        publicId: "inqvuemmlmzenxzvhw0c",
+        title: "Muggo",
+        desc: "Small mug",
+        discount: "",
+        amount: "150.000",
+        tag: "new",
+        rate: 6,
+        sku: "SS001",
+      }
+    ],
+  },
+  
+ 
+]
+
+
+export const relatedProductImage = [
+  
+  {
+    publicId: "xc0ggofmi3qrn6zlfivr",
+    title: "Respira",
+    desc: "Outdoor bar table and stool",
+    discount: "",
+    amount: " 500.00",
+    tag: "new",
+  },
+  {
+    publicId: "rzhjzikxsvnn5tgapbf9",
+    title: "Grifo",
+    desc: "Night lamp",
+    discount: "",
+    amount: "1.500.000",
+    tag: "",
+  },
+  {
+    publicId: "inqvuemmlmzenxzvhw0c",
+    title: "Muggo",
+    desc: "Small mug",
+    discount: "",
+    amount: "150.000",
+    tag: "new",
+  },
+  {
+    publicId: "ddonfbzwowcltx4xuy0v",
+    title: "Pingky",
+    desc: "Cute bed set",
+    discount: "14.000.000",
+    amount: "7.000.000",
+    tag: "-50%",
+  }
+];
