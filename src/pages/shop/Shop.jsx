@@ -1,5 +1,5 @@
 import React, { Suspense, useMemo, useState } from "react";
-import { ConfigProvider, Pagination } from "antd";
+import { ConfigProvider, Pagination, notification } from "antd";
 import { cloudName, shopImages } from "../../cloudImages/Cloud";
 import Button from "../../component/common/button/Button";
 import compareIcon from "/assets/icons/hover-icon/compare-logo.svg";
@@ -20,9 +20,7 @@ const Shop = () => {
   const { addToCart } = useCart();
   const { shopID } = useParams();
   const navigate = useNavigate();
-  const handleAddToCart = (product) => {
-    addToCart(product);
-  };
+  const [api, contextHolder] = notification.useNotification();
 
   const { activePage, nextPage, previousPage, totalPages, totalItems, items } =
     usePagination(shopImages, 1, 16);
@@ -35,11 +33,34 @@ const Shop = () => {
     startPage = Math.max(endPage - 2, 1);
   }
 
+  const handleAddToCart = (product) => {
+    const productToAdd = {
+      id: product.publicId,
+      title: product.title,
+      amount: product.amount,
+      quantity: 1,
+      size: "Default", // Default size or implement size selection if needed
+      color: "Default", // Default color or implement color selection if needed
+    };
+    console.log("Adding to cart:", productToAdd); // Debug log
+    addToCart(productToAdd);
+    openNotification("topRight", product.title);
+  };
+
+  const openNotification = (placement, productTitle) => {
+    api.info({
+      message: `Product Added to Cart`,
+      description: `${productTitle} has been added to your cart.`,
+      placement,
+    });
+  };
+
   return (
     <>
       <Container>
+        {contextHolder}
         <div className="flex flex-col justify-center items-center w-full py-10 h-fit">
-          <h1 className="text-center text-violet-500"></h1>
+          <h1 className="text-center text-violet-500">Shop</h1>
           <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10 mt-5 md:mt-10">
             {items.map((product) => (
               <div
