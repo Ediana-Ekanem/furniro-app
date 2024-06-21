@@ -70,8 +70,8 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/about" className={navLinkClasses}>
-                  About
+                <NavLink to="/blog" className={navLinkClasses}>
+                  Blog
                 </NavLink>
               </li>
               <li>
@@ -146,12 +146,12 @@ const Navbar = () => {
               </li>
               <li className="p-2 hover:text-black hover:bg-white z-50 w-full text-center border-b border-white">
                 <NavLink
-                  to="/about"
+                  to="/blog"
                   className={({ isActive }) =>
                     isActive ? "text-primary" : "text-white"
                   }
                 >
-                  About
+                  Blog
                 </NavLink>
               </li>
               <li className="p-2 hover:text-black hover:bg-white z-50 w-full text-center">
