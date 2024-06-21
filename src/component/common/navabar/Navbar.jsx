@@ -42,6 +42,8 @@ const Navbar = () => {
 
   const total = subtotal;
 
+  console.log("navbar", cartObject);
+
   return (
     <>
       <div className="bg-white fixed top-0 left-0 w-full z-50">
@@ -90,8 +92,22 @@ const Navbar = () => {
               <NavLink to="/#">
                 <img src={like} alt="like-icon" className="w-6 h-6" />
               </NavLink>
-              <div onClick={openModal} className="cursor-pointer">
-                <img src={cart} alt="cart-icon" className="w-7 h-7" />
+              <div onClick={openModal} className="cursor-pointer relative">
+                {cartObject.length > 0 && (
+                  <div className="absolute bg-red-400 h-8 w-8 top-0 left-0 rounded-full z-10 animate-ping"></div>
+                )}{" "}
+                <div className="w-8 h-8 relative z-20 p-1 bg-transparent rounded-full ">
+                  <img
+                    src={cart}
+                    alt="cart-icon"
+                    className="w-full h-full object-cover"
+                  />
+                  {cartObject.length > 0 && (
+                    <div className="w-4 h-4 top-0 -right-1 absolute bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-semibold">
+                      {cartObject.length}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
             {/* Conditionally render nav icon  */}

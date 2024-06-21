@@ -75,7 +75,11 @@ const Cart = () => {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-center">{subtotal}</td>
+                      <td className="px-6 py-4 text-center">
+                        {" "}
+                        {(parseFloat(object?.amount) || 0) *
+                          (parseInt(object?.quantity, 10) || 0)}
+                      </td>
                       <td
                         className="px-6 py-4 cursor-pointer "
                         onClick={() => removeFromCart(object.id)}

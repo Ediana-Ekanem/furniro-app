@@ -1,4 +1,10 @@
-import React, { useState, useEffect, Suspense, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  Suspense,
+  useMemo,
+  useContext,
+} from "react";
 import { cloudName, shopCatalogue } from "../../cloudImages/Cloud";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Container from "../../component/container/Container";
@@ -6,6 +12,7 @@ import { useCart } from "../../hooks/cart-context";
 import TabData from "../../component/[shopID]/tabData";
 import RelatedProduct from "../../component/[shopID]/content/related-product";
 import { RiArrowRightSLine } from "react-icons/ri";
+import { notification, Button, Space } from "antd";
 
 const PTags = ({ tag, value }) => {
   return (
@@ -26,6 +33,7 @@ const ShopID = () => {
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("");
   const [foundItem, setFoundItem] = useState();
+  const [api, contextHolder] = notification.useNotification();
 
   useEffect(() => {
     let foundItem = null;
@@ -60,8 +68,6 @@ const ShopID = () => {
       ),
     []
   );
-
-
 
   const sits = [
     "xc0ggofmi3qrn6zlfivr",
@@ -172,12 +178,23 @@ const ShopID = () => {
       color: selectedColor !== null ? sits[selectedColor] : "default color",
     };
     addToCart(productToAdd);
+    openNotification("topRight");
+  };
+
+  const openNotification = (placement) => {
+    api.info({
+      message: `Product Added to Cart`,
+      description: `${item.title} has been added to your cart.`,
+      placement,
+    });
   };
 
 
-
+  const navigate = useNavigate()
+  
   return (
     <section className="py-10">
+      {contextHolder}
       <div className="mt-10">
         <div className="bg-secondary h-12 w-full flex items-center">
           <Container>
@@ -293,6 +310,7 @@ const ShopID = () => {
                     Add to Cart
                   </button>
                   <button
+                    onClick={() => navigate("/comparison")}
                     className="border border-black text-dark text-xs md:text-sm ml-4 px-2 md:px-6 py-2 rounded-lg hover:bg-black hover:text-white  transition-all duration-300"
                   >
                     + Compare
