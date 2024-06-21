@@ -92,7 +92,10 @@ const Checkout = () => {
                         <span className="text-tertiary">{object.title}</span> x{" "}
                         {object.quantity}
                       </p>
-                      <p>{object?.quantity * object?.amount}</p>
+                      <p>
+                        {(parseFloat(object?.amount) || 0) *
+                          (parseInt(object?.quantity, 10) || 0)}
+                      </p>
                     </div>
                   </div>
                 ))}

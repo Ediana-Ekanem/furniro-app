@@ -1,6 +1,6 @@
 import React from "react";
 
-const ComparisonTable = () => {
+const ComparisonTable = ({ handleAddToCart, productOne , productTwo }) => {
   return (
     <table class="w-[700px]   text-sm text-left rtl:text-right   text-black">
       <thead class="text-xs text-[#000000] uppercase 0">
@@ -297,17 +297,23 @@ const ComparisonTable = () => {
       </tbody>
       <tbody class="text-xs  text-[#000000] uppercase 0">
         <tr className="">
-        <th
+          <th
             scope="row"
             class="px-6 py-2   border-r border-gray-200 font-medium whitespace-nowrap text-black align-top"
           />
           <td scope="col" class="px-6 py-4  border-r border-gray-200 ">
-            <button className="bg-primary h-10 w-48 text-white text-[16px]">
+            <button
+              onClick={() => handleAddToCart(productOne)}
+              className="bg-primary h-10 w-48 text-white text-[16px]"
+            >
               Add to Cart
             </button>
           </td>
           <td scope="col" class="px-6 py-4  ">
-            <button className="bg-primary h-10 w-48 text-white text-[16px]">
+            <button
+              onClick={() => handleAddToCart(productTwo)}
+              className="bg-primary h-10 w-48 text-white text-[16px]"
+            >
               Add to Cart
             </button>
           </td>{" "}
