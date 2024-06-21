@@ -1,5 +1,5 @@
 import React, { Suspense, useMemo, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import Logo from "/assets/icons/nav-icons/logo.svg";
 import profile from "/assets/icons/nav-icons/profile-icon.svg";
 import search from "/assets/icons/nav-icons/search-icon.svg";
@@ -19,7 +19,7 @@ const Navbar = () => {
   const handleClick = () => setNav(!nav);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
+  const navigate = useNavigate();
   const navLinkClasses = ({ isActive }) =>
     isActive ? "text-primary" : "text-black";
 
@@ -33,15 +33,12 @@ const Navbar = () => {
 
   const cartButtons = ["Cart", "Checkout", "Comparison"];
 
-  const subtotal = cartObject.reduce(
-    (acc, item) => {
-      // Ensure item.amount and item.quantity are numeric
-      const amount = parseFloat(item.amount) || 0;
-      const quantity = parseInt(item.quantity, 10) || 0;
-      return acc + amount * quantity;
-    },
-    0
-  );
+  const subtotal = cartObject.reduce((acc, item) => {
+    // Ensure item.amount and item.quantity are numeric
+    const amount = parseFloat(item.amount) || 0;
+    const quantity = parseInt(item.quantity, 10) || 0;
+    return acc + amount * quantity;
+  }, 0);
 
   const total = subtotal;
 
@@ -106,7 +103,7 @@ const Navbar = () => {
             <ul
               className={` ${
                 nav
-                  ? "text-white opacity-100 transform translate-x-0 z-50 "
+                  ? "text-white opacity-100 transform translate-x-0 z-50  "
                   : "opacity-0 transform translate-y-full"
               } transition-transform absolute top-0 left-0 w-full h-44 bg-zinc-800/80  flex flex-col justify-center items-center text-xl mt-20 md:hidden `}
               onClick={() => setNav(false)}
@@ -161,7 +158,7 @@ const Navbar = () => {
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="w-full h-full relative">
             <div
-              className="bg-white p-4 shadow-lg w-[400px] h-fit absolute right-0 transform transition-transform"
+              className="bg-white p-4 shadow-lg w-[350px] h-fit absolute right-0 transform transition-transform"
               style={{
                 transform: isModalOpen ? "translateX(0)" : "translateX(100%)",
               }}
@@ -208,7 +205,7 @@ const Navbar = () => {
                       </div>
                     </div>
                   ))}
-                  <div className="mt-5 border-b pb-3">
+                  <div className=" border-b pb-3 mt-20">
                     <div className="flex justify-between">
                       <p>Subtotal:</p>
                       <p className="text-primary"> {total}</p>
