@@ -17,7 +17,7 @@ const LazyImage = React.lazy(() =>
 );
 
 const Shop = () => {
-  const { addToCart } = useCart();
+  const { addToCart, isProductInCart } = useCart();
   const { shopID } = useParams();
   const navigate = useNavigate();
   const [api, contextHolder] = notification.useNotification();
@@ -34,23 +34,26 @@ const Shop = () => {
   }
 
   const handleAddToCart = (product) => {
-    const productToAdd = {
-      id: product.publicId,
-      title: product.title,
-      amount: product.amount,
-      quantity: 1,
-      size: "Default", // Default size or implement size selection if needed
-      color: "Default", // Default color or implement color selection if needed
-    };
-    console.log("Adding to cart:", productToAdd); // Debug log
-    addToCart(productToAdd);
-    openNotification("topRight", product.title);
+    if (isProductInCart(product.publicId)) {
+      openNotification("topRight", product.title, true);
+    } else {
+      const productToAdd = {
+        id: product.publicId,
+        title: product.title,
+        amount: product.amount,
+        quantity: 1,
+        size: "Default", // Default size or implement size selection if needed
+        color: "Default", // Default color or implement color selection if needed
+      };
+      addToCart(productToAdd);
+      openNotification("topRight", product.title, false);
+    }
   };
 
-  const openNotification = (placement, productTitle) => {
+  const openNotification = (placement, productTitle, alreadyAdded) => {
     api.info({
-      message: `Product Added to Cart`,
-      description: `${productTitle} has been added to your cart.`,
+      message: alreadyAdded ? `Product Already in Cart` : `Product Added to Cart`,
+      description: alreadyAdded ? `${productTitle} is already in your cart.` : `${productTitle} has been added to your cart.`,
       placement,
     });
   };
@@ -115,7 +118,7 @@ const Shop = () => {
                     padding="10px 60px"
                     onClick={() => handleAddToCart(product)}
                   >
-                    Add to cart
+                    {isProductInCart(product.publicId) ? "Already Added" : "Add to cart"}
                   </Button>
                   <div className="flex space-x-5 items-center mt-5">
                     <div className="flex space-x-1 items-center">

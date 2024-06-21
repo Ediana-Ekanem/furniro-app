@@ -13,6 +13,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { CustomNextArrow, CustomPrevArrow } from "../carousel/CustomNextArrow";
+import { useNavigate } from "react-router-dom";
 
 const CarouselSection = () => {
   const settings = {
@@ -26,7 +27,7 @@ const CarouselSection = () => {
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
   };
-
+const navigate = useNavigate()
   return (
     <section className="bg-[#FCF8F3] py-10">
       <Container>
@@ -44,6 +45,7 @@ const CarouselSection = () => {
                 backgroundColor="#b88e2f"
                 textColor="white"
                 padding="12px 52px"
+                onClick={() => navigate("/shop")}
               >
                 Explore More
               </Button>

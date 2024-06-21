@@ -7,19 +7,54 @@ import heartIcon from "/assets/icons/hover-icon/Heart-logo.svg";
 import shareIcon from "/assets/icons/hover-icon/share-logo.svg";
 import ShowMore from "../../component/common/button/ShowMore";
 import Container from "../container/Container";
+import { notification } from "antd";
+import useCart from "../../hooks/useCart";
+import { useNavigate } from "react-router-dom";
 
 // Lazy load CloudinaryImage component
 const LazyImage = React.lazy(() =>
   import("cloudinary-react").then((module) => ({ default: module.Image }))
 );
 
-const ProductSection = () => (
-  <Container>
-    <section className="mt-10">
-      <h3 className="text-[28px] md:text-[40px] font-[700] leading-[48px] text-center">
-        Our Products
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10 mt-5 md:mt-10">
+const ProductSection = () => {
+  const { addToCart, isProductInCart } = useCart();
+  const [api, contextHolder] = notification.useNotification();
+
+  const handleAddToCart = (product) => {
+    if (isProductInCart(product.publicId)) {
+      openNotification("topRight", product.title, true);
+    } else {
+      const productToAdd = {
+        id: product.publicId,
+        title: product.title,
+        amount: product.amount,
+        quantity: 1,
+        size: "Default", // Default size or implement size selection if needed
+        color: "Default", // Default color or implement color selection if needed
+      };
+      addToCart(productToAdd);
+      openNotification("topRight", product.title, false);
+    }
+  };
+
+  const openNotification = (placement, productTitle, alreadyAdded) => {
+    api.info({
+      message: alreadyAdded ? `Product Already in Cart` : `Product Added to Cart`,
+      description: alreadyAdded ? `${productTitle} is already in your cart.` : `${productTitle} has been added to your cart.`,
+      placement,
+    });
+  };
+
+  const navigate = useNavigate();
+
+  return (
+    <Container>
+      {contextHolder}
+      <section className="mt-10">
+        <h3 className="text-[28px] md:text-[40px] font-[700] leading-[48px] text-center">
+          Our Products
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10 mt-5 md:mt-10">
           {ProductImages.map((product) => (
             <div
               className="bg-[#F4F5F7] h-[436px] w-[285px] relative group ms-5 md:ms-0"
@@ -73,8 +108,9 @@ const ProductSection = () => (
                   backgroundColor="white"
                   textColor="#B88E2F"
                   padding="10px 60px"
+                  onClick={() => handleAddToCart(product)}
                 >
-                  Add to cart
+                  {isProductInCart(product.publicId) ? "Already Added" : "Add to cart"}
                 </Button>
                 <div className="flex space-x-5 items-center mt-5">
                   <div className="flex space-x-1 items-center">
@@ -93,12 +129,13 @@ const ProductSection = () => (
               </div>
             </div>
           ))}
-      </div>
-      <div className="flex justify-center my-10">
-        <ShowMore />
-      </div>
-    </section>
-  </Container>
-);
+        </div>
+        <div className="flex justify-center my-10" onClick={() => navigate("/shop")}>
+          <ShowMore />
+        </div>
+      </section>
+    </Container>
+  );
+};
 
 export default ProductSection;
