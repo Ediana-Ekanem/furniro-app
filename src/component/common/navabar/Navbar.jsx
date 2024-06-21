@@ -215,8 +215,16 @@ const Navbar = () => {
                     {cartButtons.map((button, index) => (
                       <button
                         key={index}
-                        className="w-fit bg-white px-6 rounded-[50px] py-1 text-primary-dark border border-[#000] text-sm outline-none"
-                        onClick={closeModal}
+                        className={`w-fit bg-white px-6 rounded-[50px] py-1 text-primary-dark border border-[#000] text-sm outline-none ${
+                          cartObject.length === 0
+                            ? "cursor-not-allowed"
+                            : "cursor-pointer"
+                        }`}
+                        onClick={() => {
+                          navigate(`/${button.toLowerCase()}`);
+                          closeModal();
+                        }}
+                        disabled={cartObject.length === 0}
                       >
                         {button}
                       </button>
