@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense, useMemo } from "react";
 import { cloudName, shopCatalogue } from "../../cloudImages/Cloud";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Container from "../../component/container/Container";
 import { useCart } from "../../hooks/cart-context";
 import TabData from "../../component/[shopID]/tabData";
@@ -60,6 +60,8 @@ const ShopID = () => {
       ),
     []
   );
+
+
 
   const sits = [
     "xc0ggofmi3qrn6zlfivr",
@@ -172,6 +174,8 @@ const ShopID = () => {
     addToCart(productToAdd);
   };
 
+
+
   return (
     <section className="py-10">
       <div className="mt-10">
@@ -283,10 +287,15 @@ const ShopID = () => {
                     <span onClick={handleIncrement}>+</span>
                   </button>
                   <button
-                    className="border border-black text-dark ml-4 px-6 py-2 rounded-lg hover:bg-black hover:text-white  transition-all duration-300"
+                    className="border border-black text-dark ml-4 md:px-6 md:text-sm px-2 py-2 text-xs rounded-lg hover:bg-black hover:text-white  transition-all duration-300"
                     onClick={handleAddToCart}
                   >
                     Add to Cart
+                  </button>
+                  <button
+                    className="border border-black text-dark text-xs md:text-sm ml-4 px-2 md:px-6 py-2 rounded-lg hover:bg-black hover:text-white  transition-all duration-300"
+                  >
+                    + Compare
                   </button>
                 </div>
                 <div className="mt-6 border-t py-4">

@@ -34,23 +34,23 @@ const Services = () => {
   ];
 
   return (
-    <div className="bg-[#faf3ea] w-full py-14 mt-36">
+    <div className="bg-[#faf3ea] w-full py-10 mt-36">
       <Container>
         <div className=" md:flex  justify-center md:justify-between ">
           {serviceData.map((item) => {
             return (
               <div
                 key={item.id}
-                className="flex items-center space-x-2 space-y-2 mb-4"
+                className="flex items-center space-x-2 space-y-2 "
               >
-                <div className=" w-10 md:w-14  md:10 md:h-14">
+                <div className=" w-8">
                   <img src={item.img} alt={item.title} className="title" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="md:text-[25px] leading-[37px] font-[600]">
+                  <h3 className="text-md font-[600]">
                     {item.title}
                   </h3>
-                  <p className="text-[#898989] font-[500] text-[20px] leading-[30px]">
+                  <p className="text-[#898989] font-[500] text-sm">
                     {item.subTitle}
                   </p>
                 </div>

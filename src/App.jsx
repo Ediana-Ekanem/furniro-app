@@ -8,6 +8,9 @@ import Footer from "./component/common/footer/Footer";
 import Cart from "./pages/cart/Cart";
 import ShopID from "./pages/[shopID]/page";
 import "./App.css";
+import Comparison from "./pages/comparison/Comparison";
+import Checkout from "./pages/checkout/Checkout";
+import Blog from "./pages/blog/Blog";
 
 function App() {
   return (
@@ -15,7 +18,7 @@ function App() {
       <header>
         <Navbar />
       </header>
-      <main>
+      <main className="w-full">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
@@ -23,6 +26,10 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/comparison" element={<Comparison />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </main>
       <footer>
