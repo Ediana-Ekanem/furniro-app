@@ -40,16 +40,26 @@ const Blog = () => {
   const categoryPostCounts = getCategoryPostCounts(blog);
   const recentPosts = getRandomRecentPosts(blog, 5);
 
-  const { activePage, nextPage, previousPage, totalPages, totalItems, items } =
-    usePagination(randomPosts, 1, 4);
+  // const { activePage, nextPage, previousPage, totalPages, totalItems, items } =
+  //   usePagination(randomPosts, 1, 4);
 
-  // Determine the range of page numbers to display
-  let startPage = Math.max(activePage - 1, 1);
-  let endPage = Math.min(startPage + 2, totalPages);
+  // // Determine the range of page numbers to display
+  // let startPage = Math.max(activePage - 1, 1);
+  // let endPage = Math.min(startPage + 2, totalPages);
 
-  if (endPage - startPage < 2) {
-    startPage = Math.max(endPage - 2, 1);
-  }
+  // if (endPage - startPage < 2) {
+  //   startPage = Math.max(endPage - 2, 1);
+  // }
+
+  const { activePage, nextPage, previousPage, totalPages, totalItems, items, goToPage } =
+  usePagination(randomPosts, 1, 4);
+
+let startPage = Math.max(activePage - 1, 1);
+let endPage = Math.min(startPage + 2, totalPages);
+
+if (endPage - startPage < 2) {
+  startPage = Math.max(endPage - 2, 1);
+}
 
   return (
     <div className="pt-10">
@@ -83,7 +93,7 @@ const Blog = () => {
               <p className="underline  mt-4">Read More</p>
             </div>
           ))}
-          <div className="mt-24 flex justify-center items-center">
+        <div className="mt-24 flex justify-center items-center">
             <button
               className={`px-3 py-1 rounded-md mr-2 ${
                 activePage <= 1
@@ -98,12 +108,12 @@ const Blog = () => {
             {[...Array(endPage - startPage + 1).keys()].map((index) => (
               <button
                 key={startPage + index}
-                className={`px-3 py-1  rounded-md ${
+                className={`px-3 py-1 rounded-md ${
                   startPage + index === activePage
                     ? "bg-primary text-white"
                     : "bg-secondary text-black"
                 } mx-1`}
-                onClick={() => goToPage(startPage)}
+                onClick={() => goToPage(startPage + index)}
               >
                 {startPage + index}
               </button>
