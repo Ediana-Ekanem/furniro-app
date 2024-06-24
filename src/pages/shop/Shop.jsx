@@ -1,11 +1,10 @@
-import React, { Suspense, useMemo, useState } from "react";
-import { ConfigProvider, Pagination, notification } from "antd";
+import React, { Suspense } from "react";
+import { notification } from "antd";
 import { cloudName, shopImages } from "../../cloudImages/Cloud";
 import Button from "../../component/common/button/Button";
 import compareIcon from "/assets/icons/hover-icon/compare-logo.svg";
 import heartIcon from "/assets/icons/hover-icon/Heart-logo.svg";
 import shareIcon from "/assets/icons/hover-icon/share-logo.svg";
-import ShowMore from "../../component/common/button/ShowMore";
 import Container from "../../component/container/Container";
 import useCart from "../../hooks/useCart";
 import { useNavigate, useParams } from "react-router-dom";
@@ -22,10 +21,9 @@ const Shop = () => {
   const navigate = useNavigate();
   const [api, contextHolder] = notification.useNotification();
 
-  const { activePage, nextPage, previousPage, totalPages, totalItems, items } =
-    usePagination(shopImages, 1, 16);
+  const { activePage, nextPage, previousPage, totalPages, totalItems, items, goToPage } =
+    usePagination(shopImages, 1, 10);
 
-  // Determine the range of page numbers to display
   let startPage = Math.max(activePage - 1, 1);
   let endPage = Math.min(startPage + 2, totalPages);
 
@@ -42,8 +40,8 @@ const Shop = () => {
         title: product.title,
         amount: product.amount,
         quantity: 1,
-        size: "Default", // Default size or implement size selection if needed
-        color: "Default", // Default color or implement color selection if needed
+        size: "Default",
+        color: "Default",
       };
       addToCart(productToAdd);
       openNotification("topRight", product.title, false);
@@ -64,7 +62,7 @@ const Shop = () => {
         {contextHolder}
         <div className="flex flex-col justify-center items-center w-full py-10 h-fit">
           <h1 className="text-center text-violet-500">Shop</h1>
-          <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10 mt-5 md:mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10 mt-5 md:mt-10">
             {items.map((product) => (
               <div
                 className="bg-[#F4F5F7] h-fit w-[275px] relative group ms-5 md:ms-0"
@@ -159,9 +157,9 @@ const Shop = () => {
             {[...Array(endPage - startPage + 1).keys()].map((index) => (
               <button
                 key={startPage + index}
-                className={`px-3 py-1 text-white rounded-md ${
+                className={`px-3 py-1 rounded-md ${
                   startPage + index === activePage
-                    ? "bg-primary"
+                    ? "bg-primary text-white"
                     : "bg-secondary text-black"
                 } mx-1`}
                 onClick={() => goToPage(startPage + index)}
